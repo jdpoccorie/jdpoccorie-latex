@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{xstring} % Paquete necesario para cargar condicionales en newcommand
+\usepackage{graphicx} % Paquete necesario que nos permite trabajar con imágenes
+\usepackage{vmargin} % Definir los margenes del documento
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{slashbox} % Paquete que nos permitira dividir una celda con diagonal revisar si en verdad contamos con el paquete
+
+% Paquetes que usaremos para eñ color en nuestras tablas
+\usepackage{colortbl}
+\usepackage[table]{xcolor} %podemos usar este paquete en el archivo paletaColores
+
+% Cargar los paquetes para la combinacion de columnas y de filas
+\usepackage{multicol, multirow}
+
+
+\setpapersize{A4}
+\setmargins{2.5cm} % margen izquierdo
+{1.5cm} % margen superior
+{16.5cm} % ancho del area de impresion
+{23.42cm} % longitud del area de impresion
+{0pt} % espacio para el encabezado
+{5mm} % espacio entre el encabezado y el texto
+{0pt} % espacio para el pie de pagina
+{5mm} % espacio entre el texto y el pie de pagina
+
+% indicamos la direccion donde tenemos nuestras imagenes
+\graphicspath{{./images/}}
+
+% Importar paleta de colores
+\input{paletaColores.tex}
+
+\title{Ejemplo de uso de Imágenes y Texto en \LaTeX}
+\author{Juan Diego Poccori Escalante}
+\date{\today}
+
+\begin{document}
+    \maketitle
+    \renewcommand{\contentsname}{Tabla de contenido}
+    \renewcommand{\listfigurename}{Lista de Figuras}
+    \renewcommand{\figurename}{Fig.}
+    \renewcommand{\listtablename}{Lista de tablas}
+    \tableofcontents
+    \listoffigures
+    \listoftables
+
+    \section{Combinar celdas}
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{>{\cellcolor{myBlue!75}}c|c|c|c|}
+            \hline
+            \rowcolor{myBlue!75}
+            & \multicolumn{3}{c|}{\textcolor{white}{Tolerancia Resistiva($\pm$)}} \\
+            \rowcolor{myBlue!75}
+            & 40\% & 20\% & 10\% \\
+
+            & \multirow{4}{*}{100} & \multirow{2}{*}{100} & 100 \\
+            \cline{4-4} % Dibuja la linea horizontal indicando de que columna a que columna se dibijara
+            & & & 91 \\
+            \cline{3-4}
+            & & \multirow{2}{*}{82} & 82 \\
+            \cline{4-4}
+            & & & 75 \\
+            \cline{2-4}
+
+            & \multirow{4}{*}{78} & \multirow{2}{*}{68} & 68 \\
+            \cline{4-4}
+            & & & 81 \\
+            \cline{3-4}
+            & & \multirow{2}{*}{92} & 72 \\
+            \cline{4-4}
+            & & & 85 \\
+            \cline{2-4}
+
+            & \multirow{4}{*}{88} & \multirow{2}{*}{68} & 68 \\
+            \cline{4-4}
+            & & & 71 \\
+            \cline{3-4}
+            & & \multirow{2}{*}{102} & 62 \\
+            \cline{4-4}
+            & & & 95 \\
+            \cline{2-4}
+            \multirow{-14}{*}{\rotatebox[origin=c]{90}{\textcolor{white}{Valores de resitencia estándar}}} & 10 & 10 & 10 \\
+            \hline
+
+        \end{tabular}
+        
+    \end{table}
+
+   
+\end{document}
